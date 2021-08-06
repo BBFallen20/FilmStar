@@ -33,6 +33,7 @@ INSTALLED_APPS = [
 
     # Project apps
     'api.apps.films',
+    'api.apps.profiles'
 ]
 
 MIDDLEWARE = [
@@ -55,7 +56,8 @@ EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = '/'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
-LOGIN_REDIRECT_URL = '/accounts/profile/'
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+LOGIN_REDIRECT_URL = '/'
 
 SITE_ID = 1
 
@@ -65,9 +67,6 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.TokenAuthentication',
     ]
-}
-REST_AUTH_REGISTER_SERIALIZERS = {
-    'REGISTER_SERIALIZER': 'profiles.serializers.CustomRegisterSerializer',
 }
 
 ROOT_URLCONF = 'api.settings.urls'
@@ -90,6 +89,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'api.settings.wsgi.application'
 
+AUTHENTICATION_BACKENDS = [
+    # allauth specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+    # Needed to login by username in Django admin, regardless of allauth
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 DATABASES = {
     'default': {
