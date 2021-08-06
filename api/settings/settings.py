@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 
     # Project apps
-    'api.films',
+    'api.apps.films',
 ]
 
 MIDDLEWARE = [
@@ -70,7 +70,7 @@ REST_AUTH_REGISTER_SERIALIZERS = {
     'REGISTER_SERIALIZER': 'profiles.serializers.CustomRegisterSerializer',
 }
 
-ROOT_URLCONF = 'settings.urls'
+ROOT_URLCONF = 'api.settings.urls'
 
 TEMPLATES = [
     {
@@ -88,7 +88,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'settings.wsgi.application'
+WSGI_APPLICATION = 'api.settings.wsgi.application'
 
 
 DATABASES = {
